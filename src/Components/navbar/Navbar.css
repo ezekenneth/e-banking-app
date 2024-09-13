@@ -1,0 +1,25 @@
+
+.btn-custom:hover , .btn-custom:focus {
+    border: none;
+    color: aqua;
+}
+
+.btn-custom {
+    border: none;
+    background: transparent;
+}
+
+.btn-custom:active {
+    color: none;
+}
+
+.glass-container {
+    background: rgba(255, 255, 255, 0.2); /* Translucent white */
+    border: 1px solid rgba(190, 144, 144, 0.18); /* Subtle border */
+    backdrop-filter: blur(10px); /* Blurred background */
+    box-shadow: 0 4px 6px rgba(175, 146, 146, 0.1); /* Soft shadow */
+}
+
+.list-color {
+    color: rgb(91, 18, 6) !important;
+}
