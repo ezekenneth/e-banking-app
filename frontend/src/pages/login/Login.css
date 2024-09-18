@@ -1,0 +1,40 @@
+
+
+.login-color {
+    background-color: rgb(255, 228, 228);
+}
+
+
+.form-check-input:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: none;
+   
+
+}
+
+.form-check-input:active{
+    background-color: none;
+   
+   
+}
+.form-check-input:checked{
+    background-color: red;
+    border-color: black;
+   
+  
+}
+
+.form-check-input:checked::before {
+    color: black; /* Ensure the checkmark remains visible */
+  }
+  .login-container {
+    height: auto;
+    width: 80%;
+  }
+
+  @media (min-width: 768px) {
+    .login-container {
+      width: 40%;
+    }
+  }

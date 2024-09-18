@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 import "./Navbar.css"
 
 const Navbar = () => {
@@ -14,8 +15,12 @@ const Navbar = () => {
           <div className="container-fluid">
             <a className="navbar-brand" href="#">E-bank</a>                    
               
-            <a className="nav-link ms-auto text-black me-3 d-block d-lg-none" href="#">Login</a>            
-            <a href="#" className="btn btn-info btn-sm d-block d-lg-none ">Register</a>
+            <Link to="/login" className='text-decoration-none'>
+              <span className="nav-link ms-auto text-black me-3 d-block d-lg-none">Login</span>   
+            </Link>         
+            <Link className='text-decoration' to="/register">
+               <span className="btn btn-info btn-sm d-block d-lg-none ">Register</span>
+            </Link>
 
             <a className="btn navbar-toggler btn-custom" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
@@ -37,8 +42,12 @@ const Navbar = () => {
               </ul>
               
              
-                  <a className="nav-link text-black ms-auto pe-5 d-none d-lg-block list-color fw-bold" aria-disabled="true" href="#">Login</a>
-              <a href="#" className="btn btn-info ms-2 d-none d-lg-block px-5 fw-bold">Register</a>
+              <Link to="/login" className='text-decoration-none'>
+                <span className="nav-link text-black ms-auto pe-5 d-none d-lg-block list-color fw-bold" aria-disabled="true" href="#">Login</span>
+              </Link>
+              <Link to='/register' className='text-decoration-none'>
+                  <span href="#" className="btn btn-info ms-2 d-none d-lg-block px-5 fw-bold">Register</span>
+              </Link>
             </div>
           </div>
       </nav>
