@@ -37,8 +37,8 @@ const footer = () => {
                   <div className="newsletter-input mt-4">
                     <h5>Subscribe To Our Newsletter:</h5>
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-                      <span class="input-group-text bg-danger text-white" id="basic-addon2">Subscribe</span>
+                      <input type="text" class="form-control" placeholder="Email address" aria-label="Email address" aria-describedby="newsletter-input" />
+                      <span class="input-group-text bg-danger text-white" id="newsletter-input">Subscribe</span>
                     </div>
                   </div>
                 </div>
