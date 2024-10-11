@@ -3,14 +3,30 @@ const Transaction = require('../models/Transactions');
 const asyncHandler = require('express-async-handler');
 
 
-//Get a User
+// Register a user
+
+const createUser = asyncHandler (async (req , res) => {
+  const email = req.body.email;
+  const finduser = await userschema.findOne({email});
+       
+  if (!finduser){
+      //create new user
+      const newUser = await userschema.create(req.body);
+      res.json(newUser);
+  }else{
+     throw new Error('user already exists')
+  };
+});
+
+
+  //Get a User
 
 const getUserAccount = asyncHandler(async (req, res) => {
   const account = await Account.findOne({ user: req.user.id }).populate('transactions');
   res.json(account);
 });
 
-//Make Transaction
+  //Make Transaction
 
 const makeTransaction = asyncHandler(async (req, res) => {
   const { amount, type } = req.body;
@@ -41,4 +57,4 @@ const makeTransaction = asyncHandler(async (req, res) => {
 });
 
 
-module.exports = { getUserAccount, makeTransaction };
+module.exports = { getUserAccount, makeTransaction, createUser };

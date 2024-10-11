@@ -3,7 +3,7 @@ const router = express.Router();
 const { getAllUsers, deleteUser } = require('../controllers/adminController');
 const { authMiddleware, adminMiddleware } = require('../middleware/authMiddleware');
 
-router.get('/users', authMiddleware, adminMiddleware, getAllUsers);
+router.get('/admin', authMiddleware, adminMiddleware, getAllUsers);
 router.delete('/user/:id', authMiddleware, adminMiddleware, deleteUser);
 
 module.exports = router;
