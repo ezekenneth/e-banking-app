@@ -1,23 +1,33 @@
 const jwt = require('jsonwebtoken');
+const asyncHandler = require("express-async-handler");
+const { Error } = require("mongoose");
 
-const authMiddleware = (req, res, next) => {
-  const token = req.header('x-auth-token');
-  if (!token) return res.status(401).json({ msg: 'No token, authorization denied' });
+const authMiddleware = asyncHandler(async (req, res, next )=>{
+  let token;
+  if(req?.headers?.authorization?.startsWith("Bearer")) {
+      token = req.headers.authorization.split(" ")[1];
+      try {
+          if (token) {
+              const verifytkn = jwt.verify(token, process.env.JWT_KEY);
+             const user = await userschema.findById(verifytkn?.id);
+             req.user = user;
+             next();
 
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded.user;
-    next();
-  } catch (err) {
-    res.status(401).json({ msg: 'Token is not valid' });
+          }
+      } catch (error) {
+          throw new Error('not authorized token expired please login again');
+          
+      }
+  }else{
+      throw new Error('there is no token attached to the header');
   }
-};
+});
 
-const adminMiddleware = (req, res, next) => {
+const isAdmin = (req, res, next) => {
   if (req.user.role !== 'admin') {
     return res.status(403).json({ msg: 'Access denied. Admins only.' });
   }
   next();
 };
 
-module.exports = { authMiddleware, adminMiddleware };
+module.exports = { authMiddleware, isAdmin };
